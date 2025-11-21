@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Instructors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+        }
+
+        /* ----- NEW MODERN LOGO BAR ----- */
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 30px;
+
+            background: linear-gradient(90deg, #ffffff, #f3f6ff);
+            border-bottom: 1px solid #e5e8ee;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+        .logo-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: radial-gradient(circle at top left, #5b8df9, #3b6cea);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.18);
+        }
+
+        .logo-circle img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #2d3e50;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-img-top {
+            border-bottom: 3px solid #f1f1f1;
+        }
+
+        .custom-footer {
+            background-color: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            border-radius: 8px;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+    <div class="logo-circle">
+        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" alt="Logo">
+    </div>
+    <div class="logo-title">LMS</div>
+</div>
+
+<div class="container mt-4 mb-5">
+
+    <h1 class="mb-4 text-center">All Instructors</h1>
+
+    <div class="mb-4 text-end">
+        <a href="/instructors/new" class="btn btn-primary btn-lg shadow">+ Add Instructors</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" th:each="instructor : ${allInstructors}">
+            <div class="card h-100 shadow-sm">
+
+                <img th:src="${instructor.imageUrl}" class="card-img-top" alt="Instructor Image" style="height:230px; object-fit:cover;">
+
+                <div class="card-body">
+                    <h5 class="card-text fw-bold" th:text="${instructor.firstName}"></h5>
+
+                    <div class="card-body">
+                        <h5 class="card-text fw-bold" th:text="${instructor.lastName}"></h5>
+
+                    <p class="card-text text-muted" style="font-size: 0.95rem;"
+                       th:text="${instructor.email}"></p>
+                </div>
+
+                <div class="card-footer custom-footer text-muted">
+                    <small th:text="' Instructor PhoneNumber: ' + ${instructor.phoneNumber}"></small>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a th:href="@{'/instructors/' + ${instructor.id}}" class="btn btn-info btn-sm me-2 shadow-sm">Details</a>
+
+                    <a th:href="@{'/instructors/edit/' + ${instructor.id}}" class="btn btn-warning btn-sm me-2 shadow-sm">Edit</a>
+
+                    <a th:href="@{'/instructors/delete/' + ${instructor.id}}" class="btn btn-danger btn-sm shadow-sm">Delete</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
