@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Instructor Details</title>
+    <title>Student Details</title>
 
     <style>
         body {
@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
 
             /* Красивое фонового изображение */
-            background-image: url("https://www.shutterstock.com/image-vector/business-online-training-seminar-courses-260nw-2034151103.jpg");
+            background-image: url("https://pioneereducation.com.au/wp-content/uploads/2024/12/success.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -81,29 +81,29 @@
 
 <div class="content-wrapper">
 
-    <h1>Instructor Details</h1>
+    <h1>Student Details</h1>
 
     <div class="detail-block">
-        <p><strong>First Name:</strong> <span th:text="${instructor.firstName}"></span></p>
+        <p><strong>First Name:</strong> <span th:text="${student.firstName}"></span></p>
     </div>
 
     <div class="detail-block">
-        <p><strong>Last Name:</strong> <span th:text="${instructor.lastName}"></span></p>
+        <p><strong>Last Name:</strong> <span th:text="${student.lastName}"></span></p>
     </div>
 
     <div class="detail-block">
-        <p><strong>Image URL:</strong> <span th:text="${instructor.imageUrl}"></span></p>
+        <p><strong>Image URL:</strong> <span th:text="${student.imageUrl}"></span></p>
     </div>
 
     <div class="detail-block">
-        <p><strong>Email:</strong> <span th:text="${instructor.email}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
     </div>
 
     <div class="detail-block">
-        <p><strong>Phone Number:</strong> <span th:text="${instructor.phoneNumber}"></span></p>
+        <p><strong>Phone Number:</strong> <span th:text="${student.phoneNumber}"></span></p>
     </div>
 
-    <a href="/courses" class="back-btn">Back</a>
+    <a href="/students" class="back-btn">Back</a>
 
 </div>
 

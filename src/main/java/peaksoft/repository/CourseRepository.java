@@ -16,6 +16,4 @@ public interface CourseRepository {
 
     void deleteCourse(Long id);
 
-    void assignCourseToInstructor(Long courseId,Long instructorId);
-
 }

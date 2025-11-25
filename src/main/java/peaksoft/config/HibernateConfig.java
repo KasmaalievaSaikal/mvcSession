@@ -24,6 +24,7 @@ import java.util.Properties;
 @ComponentScan("peaksoft")
 @PropertySource("classpath:application.properties")
 public class HibernateConfig {
+
     private final Environment environment;
 
     public HibernateConfig(Environment environment) {

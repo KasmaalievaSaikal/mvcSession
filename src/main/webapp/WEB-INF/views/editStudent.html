@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Instructor</title>
+    <title>Edit Student</title>
 
     <style>
         body {
@@ -17,7 +17,7 @@
             /* фон с изображением и затемнением */
             background:
                     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-                    url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+                    url('https://www.euroschoolindia.com/blogs/wp-content/uploads/2023/04/qualities-of-a-good-student.jpg') no-repeat center center;
             background-size: cover;
         }
 
@@ -25,7 +25,7 @@
             background: rgba(255, 255, 255, 0.95);
             padding: 30px 25px;
             border-radius: 12px;
-            width: 380px;      /* увеличена ширина */
+            width: 380px;
             max-width: 90%;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -114,22 +114,22 @@
 <body>
 
 <div class="form-container">
-    <h1>Edit Instructor</h1>
+    <h1>Edit Student</h1>
 
-    <form th:action="@{'/instructors/' + ${instructor.id} + '/update'}" th:object="${instructor}" method="post">
-        <label for="firstName">FirstName:</label>
+    <form th:action="@{'/students/' + ${student.id} + '/update'}" th:object="${student}" method="post">
+        <label for="firstName">First Name:</label>
         <input type="text" id="firstName" th:field="*{firstName}"/>
 
-        <label for="lastName">LastName:</label>
+        <label for="lastName">Last Name:</label>
         <input type="text" id="lastName" th:field="*{lastName}"/>
 
-        <label for="imageUrl">ImageUrl:</label>
+        <label for="imageUrl">Image URL:</label>
         <input type="text" id="imageUrl" th:field="*{imageUrl}"/>
 
         <label for="email">Email:</label>
         <input type="text" id="email" th:field="*{email}"/>
 
-        <label for="phoneNumber">PhoneNumber:</label>
+        <label for="phoneNumber">Phone Number:</label>
         <textarea id="phoneNumber" th:field="*{phoneNumber}"></textarea>
 
         <button type="submit">Update</button>

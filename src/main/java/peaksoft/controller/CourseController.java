@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import peaksoft.entity.Course;
 import peaksoft.service.CourseService;
 import peaksoft.service.InstructorService;
+import peaksoft.service.StudentService;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,10 +17,13 @@ public class CourseController {
 
     private final CourseService courseService;
     private final InstructorService instructorService;
+    private final StudentService studentService;
 
     @GetMapping
     public String getAllCourses(Model model) {
         model.addAttribute("allCourses", courseService.getAllCourses());
+        model.addAttribute("allInstructors", instructorService.getAllInstructorsWithoutCourse());
+        model.addAttribute("allStudents", studentService.getAllStudentsWithoutCourse());
         return "getAllCourses";
     }
 
@@ -61,15 +65,24 @@ public class CourseController {
         return "redirect:/courses";
     }
 
+    @PostMapping("/{courseId}/assign-instructor")
+    public String assignInstructorToCourse(
+            @PathVariable("courseId") Long courseId,
+            @RequestParam("instructorId") Long instructorId) {
 
-    @PostMapping("/assign/{courseId}")
-    public String assignInstructor(@PathVariable ("courseId") Long courseId,
-                                   @RequestParam("instructorId") Long instructorId){
-        courseService.assignCourseToInstructor(courseId, instructorId);
+        instructorService.assignInstructorToCourse(instructorId, courseId);
         return "redirect:/courses";
-
-
     }
+
+    @PostMapping("/{courseId}/assign-student")
+    public String assignStudentToCourse(
+            @PathVariable("courseId") Long courseId,
+            @RequestParam("studentId") Long studentId) {
+
+        studentService.assignStudentToCourse(courseId,studentId);
+        return "redirect:/courses";
+    }
+
 
 
 }

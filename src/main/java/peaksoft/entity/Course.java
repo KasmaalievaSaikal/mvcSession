@@ -35,6 +35,24 @@ public class Course {
     })
     List<Instructor> instructors;
 
+
+    @ManyToMany(mappedBy = "courses", cascade = {
+            CascadeType.REMOVE,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.DETACH
+    })
+    List<Student> students;
+
+
+    @OneToMany(mappedBy = "course", cascade = {
+            CascadeType.REMOVE,
+            CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.DETACH
+    })
+    List<Lesson> lessons;
+
     public Course(String title, LocalDate dateOfStart, String description) {
         this.title = title;
         this.dateOfStart = dateOfStart;

@@ -1,12 +1,11 @@
 package peaksoft.controller;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.entity.Course;
 import peaksoft.entity.Instructor;
+import peaksoft.service.CourseService;
 import peaksoft.service.InstructorService;
 
 @Controller
@@ -15,6 +14,7 @@ import peaksoft.service.InstructorService;
 public class InstructorController {
 
     private final InstructorService instructorService;
+    private final CourseService courseService;
 
     @GetMapping
     public String getAllInstructors(Model model) {
@@ -60,6 +60,7 @@ public class InstructorController {
         instructorService.deleteInstructor(id);
         return "redirect:/instructors";
     }
+
 
 }
 

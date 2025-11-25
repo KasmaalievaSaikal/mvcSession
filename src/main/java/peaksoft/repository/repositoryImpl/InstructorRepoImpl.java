@@ -17,7 +17,7 @@ import java.util.List;
 public class InstructorRepoImpl implements InstructorRepository {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Override
     public void saveInstructor(Instructor instructor) {
@@ -49,6 +49,22 @@ public class InstructorRepoImpl implements InstructorRepository {
     public void deleteInstructor(Long id) {
         Instructor instructor = entityManager.find(Instructor.class, id);
         entityManager.remove(instructor);
+    }
+
+
+    @Override
+    public void assignInstructorToCourse(Long instructorId, Long courseId) {
+        Instructor instructor = entityManager.find(Instructor.class, instructorId);
+        Course course = entityManager.find(Course.class, courseId);
+        course.getInstructors().add(instructor);
+        instructor.getCourses().add(course);
+    }
+
+    @Override
+    public List<Instructor> getAllInstructorsWithoutCourse() {
+        return entityManager.createQuery(
+                "select i from Instructor i where i.courses is empty", Instructor.class
+        ).getResultList();
     }
 
 }

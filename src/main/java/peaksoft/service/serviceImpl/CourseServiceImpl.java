@@ -39,10 +39,4 @@ public class CourseServiceImpl implements CourseService {
     public void deleteCourse(Long id) {
         courseRepository.deleteCourse(id);
     }
-
-    @Override
-    public void assignCourseToInstructor(Long courseId, Long instructorId) {
-        courseRepository.assignCourseToInstructor(courseId, instructorId);
-    }
-
 }

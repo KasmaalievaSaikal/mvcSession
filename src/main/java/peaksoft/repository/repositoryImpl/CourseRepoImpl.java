@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import peaksoft.entity.Course;
-import peaksoft.entity.Instructor;
+import peaksoft.entity.Student;
 import peaksoft.repository.CourseRepository;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class CourseRepoImpl implements CourseRepository {
 
     @PersistenceContext
-    private final EntityManager entityManager;
+    private  EntityManager entityManager;
 
     @Override
     public void saveCourse(Course course) {
@@ -45,14 +45,5 @@ public class CourseRepoImpl implements CourseRepository {
     public void deleteCourse(Long id) {
         Course course = entityManager.find(Course.class, id);
         entityManager.remove(course);
-    }
-
-
-    @Override
-    public void assignCourseToInstructor(Long courseId, Long instructorId) {
-        Course course = entityManager.find(Course.class, courseId);
-        Instructor instructor = entityManager.find(Instructor.class, instructorId);
-        course.getInstructors().add(instructor);
-        instructor.getCourses().add(course);
     }
 }

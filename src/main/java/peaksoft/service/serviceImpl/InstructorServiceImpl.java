@@ -40,5 +40,15 @@ public class InstructorServiceImpl implements InstructorService {
         instructorRepository.deleteInstructor(id);
     }
 
+    @Override
+    public void assignInstructorToCourse(Long instructorId, Long courseId) {
+        instructorRepository.assignInstructorToCourse(instructorId, courseId);
+    }
+
+    @Override
+    public List<Instructor> getAllInstructorsWithoutCourse() {
+        return instructorRepository.getAllInstructorsWithoutCourse();
+    }
+
 
 }
